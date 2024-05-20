@@ -6,9 +6,13 @@
 
 
 defmodule Day03 do
-  def is_printable(n) do
+  def my_print_comb_printable(n) do
     [a, b, c] = [Integer.floor_div(n, 100), Integer.mod(Integer.floor_div(n, 10), 10), Integer.mod(n, 10)]
     a < b && b < c
+  end
+
+  def my_print_comb2_printable(i, j) do
+    i < j
   end
 
   def my_print_alpha do
@@ -31,8 +35,16 @@ defmodule Day03 do
       end)
 
   def my_print_comb do
-    for n <- Enum.to_list(0..999), is_printable(n) do
+    for n <- Enum.to_list(0..999), my_print_comb_printable(n) do
       IO.puts(n)
+    end
+  end
+
+  def my_print_comb2 do
+    for i <- Enum.to_list(0..99),
+        j <- Enum.to_list(0..99),
+        my_print_comb2_printable(i, j) do
+          IO.puts(Integer.to_string(i) <> " " <> Integer.to_string(j))
     end
   end
 end
