@@ -74,13 +74,13 @@ defmodule Day04 do
         else: { :cont, { sign, nb <> c }} end)
   end
 
-  def my_get_nth_digits([]), do: []
-  def my_get_nth_digits([d | ds]) do
+  defp my_get_nth_digits([]), do: []
+  defp my_get_nth_digits([d | ds]) do
     if my_is_digit(d), do: [d | my_get_nth_digits(ds)], else: []
   end
 
-  def my_getnbr_convertor([]), do: 0
-  def my_getnbr_convertor([d | ds]) do
+  defp my_getnbr_convertor([]), do: 0
+  defp my_getnbr_convertor([d | ds]) do
     String.to_integer(d) * (10 ** Enum.count(ds)) + my_getnbr_convertor(ds)
   end
 
